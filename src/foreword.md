@@ -1,29 +1,83 @@
-# Foreword
-### ✨ Imagine An App...
-...That makes building Discord bots easy with beginner-friendly functions. An app that's capable of developing nearly all types of bots - from simple *echo* bots, to advanced multi-purpose administration ones. Where simplicity meets functionality and scalability. That's **Bot Designer for Discord**.
+const express = require("express");
+const app = express();
 
-What are you waiting for? Create the bot of your dreams today!
+app.listen(() => console.log("Server started"));
 
-**Start with [*Bot Designer for Discord*](https://botdesignerdiscord.com)**
+app.use('/ping', (req, res) => {
+  res.send(new Date());
+});
+//اكواد لا تحذفها
+const Discord = require('discord.js');
+require("events").EventEmitter.defaultMaxListeners = 9999999999999999999999999999;
+const client = new Discord.Client();
+const cmd = require("node-cmd");
+const ms = require("ms");
+const fs = require('fs');
+const ytdl = require("ytdl-core");
+const canvas = require("canvas");
+const convert = require("hh-mm-ss")
+const util = require("util")
+const gif = require("gif-search");
+const jimp = require("jimp");
+const guild = require('guild');
+const hastebins = require('hastebin-gen');
+const getYoutubeID = require('get-youtube-id');
+const pretty = require("pretty-ms");
+const moment = require('moment');
+const request = require('request');
+const dateFormat = require('dateformat');
+//صليت على سيدنا محمد اليوم😊؟
+const prefix = "!"//⟸ بادئه البوت او برفكس
+let havaline = 'https://media.discordapp.net/attachments/987329851864272926/987375415079366676/Picsart_22-06-17_18-16-24-882.png?width=1025&height=35';//⟸ رابط الخط 
+//كود الحاله
+client.on("ready", () => {
+  console.log(`Prefix bot : ${prefix}`)
+  console.log(`Bot is done = hava dev`)
+  client.user.setActivity({ type: "PLAYING", name: `حاله البوتك` });//// كود الحاله
+});
 
-### 📎 Links
-- [Discord Server](https://botdesignerdiscord.com/discord)
-- [Website](https://botdesignerdiscord.com/)
-- [Android App](https://play.google.com/store/apps/details?id=com.jakubtomana.discordbotdesinger)
-- [iOS App](https://apps.apple.com/app/bot-designer-for-discord/id1495536477)
-- [Web App](https://botdesignerdiscord.com/app/) *(Alpha Version)*
----
-## 📓 Wiki
-Welcome to our humble abode. You're currrently viewing **Bot Designer for Discord**'s wiki.
+//الامر التفعيل
+client.on('message', message => {
+  if (message.content.startsWith(prefix + 'تفعيل')) { //تقدر تغير الامر
+    let member = message.mentions.members.first();
+    let user = message.mentions.members.first(); if (!message.member.roles.cache.has('1139788203310731264'))//ايدي الرتبه المسؤوله عن التفعيل
+      if (!message.member.roles.cache.has('1139788203310731264'))//ايدي الرتبه المسؤوله عن التفعيل
+        if (!message.member.roles.cache.has('1139788203310731264'))  //ايدي الرتبه المسؤوله عن التفعيل
+          return message.reply(`**عفوا ي اخي انت لا تمتلك الصلاحيات الكافيه لقيام بالامر | :x: **`)
+    if (!member) return message.reply('منشن العضو')
+    //ايدي رتب البوت يعطيها للمفعل
+    let role = message.guild.roles.cache.get('1139788366863421564');
+    //ايدي الرتبه يلي ياخذها المفعل 
+    let role2 = message.guild.roles.cache.get('1139788366863421564');//ايدي الرتبه يلي ياخذها المفعل
+    let role3 = message.guild.roles.cache.get('1139788366863421564');//ايدي الرتبه يلي تنسحب من المفعل     
+    //لا تعدل شي من تحت👇   
+    member.roles.add(role);'1139788366863421564'
+    member.roles.add(role2);'1139788366863421564'
+    member.roles.remove(role3);'1139788369279332372'
+    //اذا بدك تزيد رتب التفعيل ادخل سيرفري و تواصل معي 
+    //https://discord.gg/7UQcSXRKxP
 
-### 📂 Wiki Index
-- [Guides](./guides/introduction/aboutSection.md)
-- [Resources](./resources/introduction.md)
-- [BDScript](./bdscript/introduction.md)
-- [Premium](./premium/introduction.md)
-- [JavaScript](./javascript/introduction.md)
-- [Callbacks](./callbacks/introduction.md)
+    //رساله التفعيل
+    message.channel.send(new Discord.MessageEmbed()
+      .setDescription(`** عـزيـزنـا الـمـواطـن : ${user}
+تـم تفعـيلك فـي سيرفر  
+نـرجـو منك الإلـتزام بالقـوانـين والأنظمة داخل الـسيرفر **`)//تقدر تعدلها
+      .setImage(`${havaline}`)
+      .setColor('RANDOM')
+    )
+    //رساله يلي تيجي المفعل بالخاص  
+    const embed1 = new Discord.MessageEmbed()
+      .setColor('RANDOM')
+      .setDescription(`
+تـم تفعـيلك فـي سيرفر  
+نـرجـو منك الإلـتزام بالقـوانـين والأنظمة داخل سيرفر 𝐋𝐌  `)//تقدر تغير الرساله
+      .setImage(`${havaline}`)
+    user.send(embed1)
+
+  }
+});
 
 
-#### Want to contribute to the wiki?
-Head over to the [GitHub repository contribution file](https://github.com/NilPointer-Software/bdfd-wiki/blob/dev/CONTRIBUTING.md) and learn how you can help out!
+//كود التوكن
+client.login(process.env.token);
+//ليش تستخدم البروجكت و انت مو مشترك بالقناه😤
